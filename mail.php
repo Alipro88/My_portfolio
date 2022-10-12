@@ -1,12 +1,24 @@
 <?php
 
-$recepient = "aliquamar@outlook.fr";
-$sitename = "Ali Quamar";
 
-$name = trim($_POST["name"]);
-$email = trim($_POST["email"]);
-$text = trim($_POST["text"]);
-$message = "Name: $name \nEmail: $email \nText: $text";
+    
+    if (!empty ($_POST["send" ])){
+        $userName=$_POST["name"];
+        $userEmail=$_POST[ "email"];
+        $userMessage = $_POST[ "text"];
+        $toEmail = "alikamar473@gmail.com";
 
-$pagetitle = "New message from the \"$sitename\"";
-mail($recepient, $pagetitle, $message, "Content-type: text/plain; charset=\"utf-8\"\n From: $recepient");
+        $mailHeaders="Name:" . $userName .
+        "\r\n Email:".$userEmail .
+        "\r\n Message:". $userMessage .  "\r\n";
+        
+
+        if (mail($toEmail, $userName, $mailHeaders)){
+            $message = "Your Information is Received Successfully.";
+          }
+        
+         
+    } 
+ 
+?>
+
